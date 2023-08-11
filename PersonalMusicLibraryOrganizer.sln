@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalMusicLibraryOrganizer.Console", "PersonalMusicLibraryOrganizer\PersonalMusicLibraryOrganizer.Console.csproj", "{1D973F46-FA7E-42CD-8D4B-66A0185BBFEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalMusicLibraryOrganizer.DAL", "PersonalMusicLibraryOrganizer.DAL\PersonalMusicLibraryOrganizer.DAL.csproj", "{BDD28424-5A7E-4D72-BA1B-44FB8A22CFD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalMusicLibraryOrganizer.Domain", "PersonalMusicLibraryOrganizer.Domain\PersonalMusicLibraryOrganizer.Domain.csproj", "{25A29656-A613-48B2-A313-9167630240C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalMusicLibraryOrganizer.Service", "PersonalMusicLibraryOrganizer.Service\PersonalMusicLibraryOrganizer.Service.csproj", "{DDE7A730-176C-4BB5-82B7-B7318E5599E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D973F46-FA7E-42CD-8D4B-66A0185BBFEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D973F46-FA7E-42CD-8D4B-66A0185BBFEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D973F46-FA7E-42CD-8D4B-66A0185BBFEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D973F46-FA7E-42CD-8D4B-66A0185BBFEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDD28424-5A7E-4D72-BA1B-44FB8A22CFD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDD28424-5A7E-4D72-BA1B-44FB8A22CFD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDD28424-5A7E-4D72-BA1B-44FB8A22CFD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDD28424-5A7E-4D72-BA1B-44FB8A22CFD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A29656-A613-48B2-A313-9167630240C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A29656-A613-48B2-A313-9167630240C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A29656-A613-48B2-A313-9167630240C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A29656-A613-48B2-A313-9167630240C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE7A730-176C-4BB5-82B7-B7318E5599E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE7A730-176C-4BB5-82B7-B7318E5599E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE7A730-176C-4BB5-82B7-B7318E5599E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE7A730-176C-4BB5-82B7-B7318E5599E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2EF8846-83A2-48CD-B1E1-C4FA4FB2E175}
+	EndGlobalSection
+EndGlobal
