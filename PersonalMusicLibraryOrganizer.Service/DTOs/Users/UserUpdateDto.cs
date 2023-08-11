@@ -13,4 +13,5 @@ public class UserUpdateDto
     public string Email { get; set; }
     public string Password { get; set; }
     public string Salt { get; set; }
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow.AddHours(5);
 }
