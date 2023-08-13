@@ -3,11 +3,13 @@ using PersonalMusicLibraryOrganizer.DAL.Contexts;
 using PersonalMusicLibraryOrganizer.Service.Services;
 using PersonalMusicLibraryOrganizer.Service.DTOs.Playlists;
 using NAudio.Wave;
+using PersonalMusicLibraryOrganizer.Service.Views.UserView;
 
 namespace PersonalMusicLibraryOrganizer.Service.Views.PlaylistView;
 
 public class PlaylistMenu
 {
+    UserMenu userMenu = new UserMenu();
     PlaylistService playlistService = new PlaylistService();
     SongService songService = new SongService();
     AppDbContext dbContext = new AppDbContext();
@@ -61,7 +63,7 @@ public class PlaylistMenu
     {
         var res = await dbContext.Songs.Include(t => t.Playlist).ToListAsync();
         
-        if(res.Count == 0)
+        if(res.Count != 0)
         foreach (var i in res)
             await Console.Out.WriteLineAsync($"Id : {i.Id} | Title : {i.Title}");
         else
@@ -88,7 +90,12 @@ public class PlaylistMenu
         };
 
         var res = await playlistService.CreateAsync(dto);
-        await Console.Out.WriteLineAsync(res.Message);
+        if (res.StatusCode == 404)
+        {
+            await Console.Out.WriteLineAsync("Bunday User mavjud emas!");
+            await Console.Out.WriteLineAsync("Mavjud Userlar: ");
+            userMenu.GetAll();
+        }
     }
 
     public async void Update()
@@ -144,7 +151,7 @@ public class PlaylistMenu
 
         if (res.StatusCode == 200)
             foreach (var i in res.Data)
-                await Console.Out.WriteLineAsync($"Title : {i.Title} | Description : {i.Description} | UserName : {i.UserName} | UserId : {i.UserId}");
+                await Console.Out.WriteLineAsync($"Id : {i.Id} | Title : {i.Title} | Description : {i.Description} | UserName : {i.UserName} | UserId : {i.UserId}");
         else
             await Console.Out.WriteLineAsync(res.Message);
     }

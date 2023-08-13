@@ -139,7 +139,7 @@ public class UserMenu
         var res = await userService.GetAllAsync();
         if(res.StatusCode == 200)
             foreach( var i in res.Data)
-                await Console.Out.WriteLineAsync($"FirstName : {i.FirstName} | LastName : {i.LastName} | Email : {i.Email}");
+                await Console.Out.WriteLineAsync($"Id : {i.Id} | FirstName : {i.FirstName} | LastName : {i.LastName} | Email : {i.Email}");
         else
             await Console.Out.WriteLineAsync(res.Message);
     }

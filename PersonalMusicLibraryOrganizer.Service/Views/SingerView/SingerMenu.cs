@@ -146,7 +146,7 @@ public class SingerMenu
         var res = await singerService.GetAllAsync();
         if(res.StatusCode == 200)
             foreach( var i in res.Data)
-                await Console.Out.WriteLineAsync($"FullName : {i.FullName} | DateOfBirth : {i.DateOfBirth} | Country : {i.Country} | Email : {i.Email}");
+                await Console.Out.WriteLineAsync($"Id : {i.Id} | FullName : {i.FullName} | DateOfBirth : {i.DateOfBirth} | Country : {i.Country} | Email : {i.Email}");
         else
             await Console.Out.WriteLineAsync(res.Message);
     }

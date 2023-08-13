@@ -31,6 +31,32 @@ public class SongService : ISongService
                 Message = "Already exist!"
             };
 
+        var singer = await unitOfWork.SingerRepository.GetByIdAsync(dto.SingerId);
+        if (singer is null)
+            return new Response<SongResultDto>
+            {
+                StatusCode = 406,
+                Message = "Not found!"
+            };
+
+        var album = await unitOfWork.AlbumRepository.GetByIdAsync(dto.AlbumId);
+        if (album is null)
+            return new Response<SongResultDto>
+            {
+                StatusCode = 405,
+                Message = "Not found!"
+            };
+
+        var playlist = await unitOfWork.PlaylistRepository.GetByIdAsync(dto.PlaylistId);
+        if (playlist is not null)
+            return new Response<SongResultDto>
+            {
+                StatusCode = 404,
+                Message = "Not found!"
+            };
+
+
+
         var mapSong = mapper.Map<Song>(dto);
         await unitOfWork.SongRepository.CreateAsync(mapSong);
         await unitOfWork.SaveAsync();

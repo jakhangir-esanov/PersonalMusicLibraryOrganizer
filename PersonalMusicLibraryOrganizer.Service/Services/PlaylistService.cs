@@ -30,6 +30,14 @@ public class PlaylistService : IPlaylistService
                 Message = "Already exist!"
             };
 
+        var user = await unitOfWork.UserRepository.GetByIdAsync(dto.UserId);
+        if (user is null)
+            return new Response<PlaylistResultDto>
+            {
+                StatusCode = 404,
+                Message = "Not found!"
+            };
+
         var mapPlaylist = mapper.Map<Playlist>(dto);
         await unitOfWork.PlaylistRepository.CreateAsync(mapPlaylist);
         await unitOfWork.SaveAsync();

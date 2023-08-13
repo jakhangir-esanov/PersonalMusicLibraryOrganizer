@@ -1,10 +1,16 @@
 ﻿using PersonalMusicLibraryOrganizer.Service.DTOs.Songs;
 using PersonalMusicLibraryOrganizer.Service.Services;
+using PersonalMusicLibraryOrganizer.Service.Views.AlbumView;
+using PersonalMusicLibraryOrganizer.Service.Views.PlaylistView;
+using PersonalMusicLibraryOrganizer.Service.Views.SingerView;
 
 namespace PersonalMusicLibraryOrganizer.Service.Views.SongView;
 
 public class SongMenu
 {
+    SingerMenu singerMenu = new SingerMenu();
+    AlbumMenu albumMenu = new AlbumMenu();
+    PlaylistMenu playlistMenu = new PlaylistMenu();
     SongService songService = new SongService();
 
     public void Asosiy()
@@ -77,7 +83,26 @@ public class SongMenu
         };
 
         var res = await songService.CreateAsync(dto);
-        await Console.Out.WriteLineAsync(res.Message);
+        if (res.StatusCode == 406)
+        {
+            await Console.Out.WriteLineAsync("Bunday singer mavjud emas!");
+            await Console.Out.WriteLineAsync("Mavjud Singerlar: ");
+            singerMenu.GetAll();
+        }
+        if (res.StatusCode == 404)
+        {
+            await Console.Out.WriteLineAsync("Bunday playlist mavjud emas!");
+            await Console.Out.WriteLineAsync("Mavjud Playlistlar: ");
+            playlistMenu.GetAll();
+        }
+        if (res.StatusCode == 405)
+        {
+            await Console.Out.WriteLineAsync("Bunday album mavjud emas!");
+            await Console.Out.WriteLineAsync("Mavjud Albumlar: ");
+            albumMenu.GetAll();
+        }
+        else
+            await Console.Out.WriteLineAsync(res.Message);
     }
 
     public async void Update()

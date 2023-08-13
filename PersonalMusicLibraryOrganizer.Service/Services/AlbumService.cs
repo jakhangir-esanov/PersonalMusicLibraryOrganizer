@@ -30,6 +30,14 @@ public class AlbumService : IAlbumService
                 Message = "Already exist!"
             };
 
+        var singer = await unitOfWork.SingerRepository.GetByIdAsync(dto.SingerId);
+        if (singer is null)
+            return new Response<AlbumResultDto>
+            {
+                StatusCode = 404,
+                Message = "Not found!"
+            };
+
         var mapAlbum = mapper.Map<Album>(dto);
         await unitOfWork.AlbumRepository.CreateAsync(mapAlbum);
         await unitOfWork.SaveAsync();

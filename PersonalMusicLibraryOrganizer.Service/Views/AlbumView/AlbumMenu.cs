@@ -1,13 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using NAudio.Wave;
+﻿using NAudio.Wave;
+using Microsoft.EntityFrameworkCore;
 using PersonalMusicLibraryOrganizer.DAL.Contexts;
-using PersonalMusicLibraryOrganizer.Service.DTOs.Albums;
 using PersonalMusicLibraryOrganizer.Service.Services;
+using PersonalMusicLibraryOrganizer.Service.DTOs.Albums;
+using PersonalMusicLibraryOrganizer.Service.Views.SingerView;
 
 namespace PersonalMusicLibraryOrganizer.Service.Views.AlbumView;
 
 public class AlbumMenu
 {
+    SingerMenu singerMenu = new SingerMenu();
     AlbumService albumService = new AlbumService();
     AppDbContext dbContext = new AppDbContext();
     SongService songService = new SongService();
@@ -62,7 +64,7 @@ public class AlbumMenu
     {
         var res = await dbContext.Songs.Include(t => t.Album).ToListAsync();
 
-        if (res.Count == 0)
+        if (res.Count != 0)
             foreach (var i in res)
                 await Console.Out.WriteLineAsync($"Id : {i.Id} | Title : {i.Title}");
         else
@@ -88,7 +90,14 @@ public class AlbumMenu
         };
 
         var res = await albumService.CreateAsync(dto);
-        Console.WriteLine(res.Message);
+        if (res.StatusCode == 404)
+        {
+            Console.WriteLine("Bunday Singer mavjud emas!");
+            await Console.Out.WriteLineAsync("Mavjud Singerlar: ");
+            singerMenu.GetAll();
+        }
+        else
+            await Console.Out.WriteLineAsync(res.Message);
     }
 
     public async void Update()
@@ -143,7 +152,7 @@ public class AlbumMenu
         var res = await albumService.GetAllAsync();
         if (res.StatusCode == 200)
             foreach (var i in res.Data)
-                await Console.Out.WriteLineAsync($"Title : {i.Title} | Year : {i.Year} | SingerName : {i.SingerName} | SingerId : {i.SingerId}");
+                await Console.Out.WriteLineAsync($"Id : {i.Id} | Title : {i.Title} | Year : {i.Year} | SingerName : {i.SingerName} | SingerId : {i.SingerId}");
         else
             Console.WriteLine(res.Message);
     }
