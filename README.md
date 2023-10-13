@@ -6,12 +6,10 @@ XMelody is a C# console-based music player that allows music makers to share the
 
 - [Features](#features)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
-
+- [Contact](#contact).
+  
 ## Features
 
 - **Music Creators**
